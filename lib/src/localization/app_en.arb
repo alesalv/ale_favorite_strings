@@ -1,0 +1,6 @@
+{
+  "appTitle": "ale_favorite_strings",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
