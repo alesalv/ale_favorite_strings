@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/views/widgets/unfavorited_indicator.dart';
 import '../../controllers/favorite_strings_tab_controller.dart';
 import '../widgets/string_list_item.dart';
 
@@ -13,20 +14,25 @@ class FavoriteStringsTab extends ConsumerWidget {
     final favorites = ref.watch(
         favoriteStringsTabControllerProvider.select((c) => c.state.favorite));
 
-    return favorites.isEmpty
-        ? const Center(
-            child: Text('Sorry, no favorites'),
-          )
-        : ListView(
-            children: favorites
-                .map((s) => StringListItem(
-                      name: s.title,
-                      isFavorite: true,
-                      onTap: () => ref
-                          .read(favoriteStringsTabControllerProvider)
-                          .favor(s.title),
-                    ))
-                .toList(),
-          );
+    return Stack(
+      children: [
+        favorites.isEmpty
+            ? const Center(
+                child: Text('Sorry, no favorites'),
+              )
+            : ListView(
+                children: favorites
+                    .map((s) => StringListItem(
+                          name: s.title,
+                          isFavorite: true,
+                          onTap: () => ref
+                              .read(favoriteStringsTabControllerProvider)
+                              .favor(s.title),
+                        ))
+                    .toList(),
+              ),
+        UnfavoritedIndicator(favoriteStringsTabControllerProvider),
+      ],
+    );
   }
 }

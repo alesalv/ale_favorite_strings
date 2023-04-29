@@ -10,6 +10,7 @@ part 'all_strings_tab_ui_state.freezed.dart';
 class AllStringsTabUiState with _$AllStringsTabUiState {
   const factory AllStringsTabUiState({
     @Default([]) final List<StringUiState> all,
+    @Default('') final String unfavoritedTitle,
     // @Default(false) final bool isLoading,
     // @Default('') final String errorMsg,
   }) = _AllStringsTabUiState;

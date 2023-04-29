@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FavoriteStringsTabUiState {
   List<FavoriteStringTabUiState> get favorite =>
       throw _privateConstructorUsedError;
+  String get unfavoritedTitle => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FavoriteStringsTabUiStateCopyWith<FavoriteStringsTabUiState> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $FavoriteStringsTabUiStateCopyWith<$Res> {
           $Res Function(FavoriteStringsTabUiState) then) =
       _$FavoriteStringsTabUiStateCopyWithImpl<$Res, FavoriteStringsTabUiState>;
   @useResult
-  $Res call({List<FavoriteStringTabUiState> favorite});
+  $Res call({List<FavoriteStringTabUiState> favorite, String unfavoritedTitle});
 }
 
 /// @nodoc
@@ -48,12 +49,17 @@ class _$FavoriteStringsTabUiStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? favorite = null,
+    Object? unfavoritedTitle = null,
   }) {
     return _then(_value.copyWith(
       favorite: null == favorite
           ? _value.favorite
           : favorite // ignore: cast_nullable_to_non_nullable
               as List<FavoriteStringTabUiState>,
+      unfavoritedTitle: null == unfavoritedTitle
+          ? _value.unfavoritedTitle
+          : unfavoritedTitle // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -67,7 +73,7 @@ abstract class _$$_FavoriteStringsTabUiStateCopyWith<$Res>
       __$$_FavoriteStringsTabUiStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<FavoriteStringTabUiState> favorite});
+  $Res call({List<FavoriteStringTabUiState> favorite, String unfavoritedTitle});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$_FavoriteStringsTabUiStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? favorite = null,
+    Object? unfavoritedTitle = null,
   }) {
     return _then(_$_FavoriteStringsTabUiState(
       favorite: null == favorite
           ? _value._favorite
           : favorite // ignore: cast_nullable_to_non_nullable
               as List<FavoriteStringTabUiState>,
+      unfavoritedTitle: null == unfavoritedTitle
+          ? _value.unfavoritedTitle
+          : unfavoritedTitle // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -100,7 +111,8 @@ class _$_FavoriteStringsTabUiState
     with DiagnosticableTreeMixin
     implements _FavoriteStringsTabUiState {
   const _$_FavoriteStringsTabUiState(
-      {final List<FavoriteStringTabUiState> favorite = const []})
+      {final List<FavoriteStringTabUiState> favorite = const [],
+      this.unfavoritedTitle = ''})
       : _favorite = favorite;
 
   final List<FavoriteStringTabUiState> _favorite;
@@ -113,8 +125,12 @@ class _$_FavoriteStringsTabUiState
   }
 
   @override
+  @JsonKey()
+  final String unfavoritedTitle;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FavoriteStringsTabUiState(favorite: $favorite)';
+    return 'FavoriteStringsTabUiState(favorite: $favorite, unfavoritedTitle: $unfavoritedTitle)';
   }
 
   @override
@@ -122,7 +138,8 @@ class _$_FavoriteStringsTabUiState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'FavoriteStringsTabUiState'))
-      ..add(DiagnosticsProperty('favorite', favorite));
+      ..add(DiagnosticsProperty('favorite', favorite))
+      ..add(DiagnosticsProperty('unfavoritedTitle', unfavoritedTitle));
   }
 
   @override
@@ -130,12 +147,14 @@ class _$_FavoriteStringsTabUiState
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FavoriteStringsTabUiState &&
-            const DeepCollectionEquality().equals(other._favorite, _favorite));
+            const DeepCollectionEquality().equals(other._favorite, _favorite) &&
+            (identical(other.unfavoritedTitle, unfavoritedTitle) ||
+                other.unfavoritedTitle == unfavoritedTitle));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_favorite));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_favorite), unfavoritedTitle);
 
   @JsonKey(ignore: true)
   @override
@@ -147,11 +166,13 @@ class _$_FavoriteStringsTabUiState
 
 abstract class _FavoriteStringsTabUiState implements FavoriteStringsTabUiState {
   const factory _FavoriteStringsTabUiState(
-          {final List<FavoriteStringTabUiState> favorite}) =
-      _$_FavoriteStringsTabUiState;
+      {final List<FavoriteStringTabUiState> favorite,
+      final String unfavoritedTitle}) = _$_FavoriteStringsTabUiState;
 
   @override
   List<FavoriteStringTabUiState> get favorite;
+  @override
+  String get unfavoritedTitle;
   @override
   @JsonKey(ignore: true)
   _$$_FavoriteStringsTabUiStateCopyWith<_$_FavoriteStringsTabUiState>

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AllStringsTabUiState {
   List<StringUiState> get all => throw _privateConstructorUsedError;
+  String get unfavoritedTitle => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AllStringsTabUiStateCopyWith<AllStringsTabUiState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $AllStringsTabUiStateCopyWith<$Res> {
           $Res Function(AllStringsTabUiState) then) =
       _$AllStringsTabUiStateCopyWithImpl<$Res, AllStringsTabUiState>;
   @useResult
-  $Res call({List<StringUiState> all});
+  $Res call({List<StringUiState> all, String unfavoritedTitle});
 }
 
 /// @nodoc
@@ -47,12 +48,17 @@ class _$AllStringsTabUiStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? all = null,
+    Object? unfavoritedTitle = null,
   }) {
     return _then(_value.copyWith(
       all: null == all
           ? _value.all
           : all // ignore: cast_nullable_to_non_nullable
               as List<StringUiState>,
+      unfavoritedTitle: null == unfavoritedTitle
+          ? _value.unfavoritedTitle
+          : unfavoritedTitle // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -65,7 +71,7 @@ abstract class _$$_AllStringsTabUiStateCopyWith<$Res>
       __$$_AllStringsTabUiStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<StringUiState> all});
+  $Res call({List<StringUiState> all, String unfavoritedTitle});
 }
 
 /// @nodoc
@@ -80,12 +86,17 @@ class __$$_AllStringsTabUiStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? all = null,
+    Object? unfavoritedTitle = null,
   }) {
     return _then(_$_AllStringsTabUiState(
       all: null == all
           ? _value._all
           : all // ignore: cast_nullable_to_non_nullable
               as List<StringUiState>,
+      unfavoritedTitle: null == unfavoritedTitle
+          ? _value.unfavoritedTitle
+          : unfavoritedTitle // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -95,7 +106,8 @@ class __$$_AllStringsTabUiStateCopyWithImpl<$Res>
 class _$_AllStringsTabUiState
     with DiagnosticableTreeMixin
     implements _AllStringsTabUiState {
-  const _$_AllStringsTabUiState({final List<StringUiState> all = const []})
+  const _$_AllStringsTabUiState(
+      {final List<StringUiState> all = const [], this.unfavoritedTitle = ''})
       : _all = all;
 
   final List<StringUiState> _all;
@@ -108,8 +120,12 @@ class _$_AllStringsTabUiState
   }
 
   @override
+  @JsonKey()
+  final String unfavoritedTitle;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AllStringsTabUiState(all: $all)';
+    return 'AllStringsTabUiState(all: $all, unfavoritedTitle: $unfavoritedTitle)';
   }
 
   @override
@@ -117,7 +133,8 @@ class _$_AllStringsTabUiState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AllStringsTabUiState'))
-      ..add(DiagnosticsProperty('all', all));
+      ..add(DiagnosticsProperty('all', all))
+      ..add(DiagnosticsProperty('unfavoritedTitle', unfavoritedTitle));
   }
 
   @override
@@ -125,12 +142,14 @@ class _$_AllStringsTabUiState
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AllStringsTabUiState &&
-            const DeepCollectionEquality().equals(other._all, _all));
+            const DeepCollectionEquality().equals(other._all, _all) &&
+            (identical(other.unfavoritedTitle, unfavoritedTitle) ||
+                other.unfavoritedTitle == unfavoritedTitle));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_all));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_all), unfavoritedTitle);
 
   @JsonKey(ignore: true)
   @override
@@ -141,11 +160,14 @@ class _$_AllStringsTabUiState
 }
 
 abstract class _AllStringsTabUiState implements AllStringsTabUiState {
-  const factory _AllStringsTabUiState({final List<StringUiState> all}) =
-      _$_AllStringsTabUiState;
+  const factory _AllStringsTabUiState(
+      {final List<StringUiState> all,
+      final String unfavoritedTitle}) = _$_AllStringsTabUiState;
 
   @override
   List<StringUiState> get all;
+  @override
+  String get unfavoritedTitle;
   @override
   @JsonKey(ignore: true)
   _$$_AllStringsTabUiStateCopyWith<_$_AllStringsTabUiState> get copyWith =>
