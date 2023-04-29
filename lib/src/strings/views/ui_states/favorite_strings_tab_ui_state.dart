@@ -10,6 +10,7 @@ part 'favorite_strings_tab_ui_state.freezed.dart';
 class FavoriteStringsTabUiState with _$FavoriteStringsTabUiState {
   const factory FavoriteStringsTabUiState({
     @Default([]) final List<FavoriteStringTabUiState> favorite,
+    @Default('') final String unfavoritedTitle,
     // @Default(false) final bool isLoading,
     // @Default('') final String errorMsg,
   }) = _FavoriteStringsTabUiState;

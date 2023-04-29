@@ -5,9 +5,11 @@ import 'package:ale_favorite_strings/src/strings/views/ui_states/favorite_string
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/views/widgets/unfavorited_consumable.dart';
 import '../models/data/favoritable_string.dart';
 
-class FavoriteStringsTabController extends ChangeNotifier {
+class FavoriteStringsTabController extends ChangeNotifier
+    with UnfavoritedConsumable {
   FavoriteStringsTabController(this._repository) {
     _subscription = _repository.watch().listen(_onFavoritables);
     // init
@@ -19,8 +21,26 @@ class FavoriteStringsTabController extends ChangeNotifier {
   FavoriteStringsTabUiState _state = const FavoriteStringsTabUiState();
   FavoriteStringsTabUiState get state => _state;
 
-  Future<void> favor(String title) async {
-    return _repository.update(title, false);
+  String _unfavoritedTitle = '';
+
+  void favor(String title) {
+    _unfavoritedTitle = title;
+    _repository.update(title, false);
+  }
+
+  @override
+  String get unfavoritedTitle => _state.unfavoritedTitle;
+
+  @override
+  void consumeTitle() {
+    _unfavoritedTitle = '';
+    _state = _state.copyWith(unfavoritedTitle: _unfavoritedTitle);
+    notifyListeners();
+  }
+
+  @override
+  void undo(String title) {
+    _repository.update(title, true);
   }
 
   @override
@@ -32,10 +52,12 @@ class FavoriteStringsTabController extends ChangeNotifier {
 
   void _onFavoritables(List<FavoritableString> strings) {
     _state = _state.copyWith(
-        favorite: strings
-            .where((s) => s.isFavorite)
-            .map((s) => FavoriteStringTabUiState.fromFavoritableString(s))
-            .toList());
+      favorite: strings
+          .where((s) => s.isFavorite)
+          .map((s) => FavoriteStringTabUiState.fromFavoritableString(s))
+          .toList(),
+      unfavoritedTitle: _unfavoritedTitle,
+    );
     notifyListeners();
   }
 }
